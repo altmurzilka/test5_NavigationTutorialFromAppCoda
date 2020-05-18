@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(tutors) { tutor in
+            List (tutors) { tutor in
                 TutorCell(tutor: tutor)
             }.navigationBarTitle(Text("Tutors"))
         }
@@ -31,13 +31,15 @@ struct TutorCell: View {
     let tutor: Tutor
     var body: some View {
         return NavigationLink(destination: TutorDetail(name: tutor.name, headline: tutor.headline, bio: tutor.bio)) {
-            Image(tutor.imageName)
-                .cornerRadius(40)
-            VStack(alignment: .leading) {
-                Text(tutor.name)
-                Text(tutor.headline)
-                    .font(.subheadline).foregroundColor(.gray)
+            HStack {
+                Image(tutor.imageName)
+                    .cornerRadius(40)
+                VStack(alignment: .leading) {
+                    Text(tutor.name)
+                    Text(tutor.headline)
+                        .font(.subheadline).foregroundColor(.gray)
+                }
             }
-        }
+        }.padding(.trailing, -30.0)
     }
 }
